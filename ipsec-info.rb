@@ -80,6 +80,10 @@ Netconf::SSH.new(login) do |dev|
 		puts "#{ip} => IKE Phase 1 Status: #{status.colorize(:green)}" if status == "UP"
 		puts "#{ip} => IKE Phase 1 Status: #{status.colorize(:red)}" if status == "DOWN"
 		puts "\tPer-flow tunnel information:\n\n"
+        
+        if status == "DOWN"
+            puts "\tNo active tunnels for this IP. VPN is down!".colorize(:yellow)
+        end
 
 		ipsec_data.each_pair do |key, value|
 			data = value.split(",")
