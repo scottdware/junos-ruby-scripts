@@ -12,7 +12,8 @@ gems installed:
 - `ipsec-info.rb <user@host>`
 	- This script will query an SRX and get all of the IPsec VPN tunnel information. Example:
 
-	<pre>199.199.199.199 => IKE Phase 1 Status: UP
+	<pre>
+	199.199.199.199 => IKE Phase 1 Status: UP
         Per-flow tunnel information:
 
         Tunnel Index:           2
@@ -25,4 +26,5 @@ gems installed:
         Identifier:             97974ccd
         Encryption:             ESP:3des/sha1
         Direction:              > outbound
-        Lifetime/Remaining:     3206/unlim</pre>
+        Lifetime/Remaining:     3206/unlim
+    </pre>
