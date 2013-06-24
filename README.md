@@ -17,7 +17,7 @@ This can be done by issuing `gem install <gem>` on the cli.
 	<pre><code>Total Active Tunnels: 1
     
     1.1.1.1 => IKE Phase 1 Status: UP
-        Per-flow tunnel information:
+        Per-flow tunnel information (1 tunnel):
 
         Tunnel Index:           2
         Identifier:             5b41dc1c
@@ -32,6 +32,6 @@ This can be done by issuing `gem install <gem>` on the cli.
         Lifetime/Remaining:     3206/unlim
 
     2.2.2.2 => IKE Phase 1 Status: DOWN
-        Per-flow tunnel information:
+        Per-flow tunnel information (0 tunnels):
 
         No active tunnels for this IP. VPN is down!</code></pre>
