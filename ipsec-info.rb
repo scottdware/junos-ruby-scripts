@@ -3,7 +3,7 @@ require 'highline/import'
 require 'colorize'
 
 # Print out the usage if there is no argument given.
-if !ARGV[0]
+def usage()
 	puts "Usage: ipsec-info.rb <user@host>\n"
 	exit 0
 end
@@ -11,6 +11,11 @@ end
 # Get the username and host.
 host = ARGV[0].split("@")[1]
 user = ARGV[0].split("@")[0]
+
+if host.nil? || user.nil?
+	usage()
+end
+
 pass = ask("Password: ") { |a| a.echo = false }
 
 login = {
