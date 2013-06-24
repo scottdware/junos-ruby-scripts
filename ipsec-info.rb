@@ -9,8 +9,8 @@ def usage()
 end
 
 # Get the username and host.
-host = ARGV[0].split("@")[1]
-user = ARGV[0].split("@")[0]
+host = ARGV[0].split('@')[1]
+user = ARGV[0].split('@')[0]
 
 if host.nil? || user.nil?
 	usage()
@@ -58,7 +58,7 @@ Netconf::SSH.new(login) do |dev|
 		ipsec_lifesize_remain = ipsec.xpath('sa-lifesize-remaining').text
 		ipsec_ti = ipsec.xpath('sa-tunnel-index').text
 		
-		direction = { "<" => "inbound", ">" => "outbound" }
+		direction = { '<' => 'inbound', '>' => 'outbound' }
 		data = ipsec_remote + "," +
 			   ipsec_prot + 
 			   ipsec_esp +
