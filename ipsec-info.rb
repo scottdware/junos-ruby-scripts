@@ -37,6 +37,7 @@ Netconf::SSH.new(login) do |dev|
 	num_tunnels = ipsec_info.xpath('//total-active-tunnels').text
 	remote_hosts = {}
 	ipsec_data = {}
+    tunnel_list = []
 
 	# Get the remote IP and phase 1 status, and assign them to a hash table.
 	ike_info.xpath('//ike-security-associations').each do |ike|
@@ -71,15 +72,26 @@ Netconf::SSH.new(login) do |dev|
 			   ipsec_ti
 
 		ipsec_data[ipsec_spi] = data
+        tunnel_list << ipsec_remote
 	end
 
 	puts "\nTotal Active Tunnels: #{num_tunnels}\n\n"
 
 	# Loop over each IP, and list the tunnel information for said IP.
 	remote_hosts.each_pair do |ip, status|
+        count = 0
+        tunnel_list.each do |tunnel|
+            count += 1 if tunnel == ip
+        end
+        if (count / 2) == 1
+            tcount = "tunnel"
+        else
+            tcount = "tunnels"
+        end
+        
 		puts "#{ip} => IKE Phase 1 Status: #{status.colorize(:green)}" if status == "UP"
 		puts "#{ip} => IKE Phase 1 Status: #{status.colorize(:red)}" if status == "DOWN"
-		puts "\tPer-flow tunnel information:\n\n"
+		puts "\tPer-flow tunnel information (#{count / 2} #{tcount}):\n\n"
         
         if status == "DOWN"
             puts "\tNo active tunnels for this IP. VPN is down!".colorize(:yellow)
