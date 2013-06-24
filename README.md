@@ -1,6 +1,6 @@
 ## junos-ruby-scripts
 
-A collection of Ruby scripts to interact with Junos devices. PLease make sure that you have the following
+A collection of Ruby scripts to interact with Junos devices. Please make sure that you have the following
 gems installed:
 
 - netconf
