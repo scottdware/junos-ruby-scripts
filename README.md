@@ -14,7 +14,7 @@ This can be done by issuing `gem install <gem>` on the cli.
 - `ipsec-info.rb <user@host>`
 	- This script will query an SRX and get all of the IPsec VPN tunnel information. Example:
 
-	<pre><code>199.199.199.199 => IKE Phase 1 Status: UP
+	<pre><code>1.1.1.1 => IKE Phase 1 Status: UP
         Per-flow tunnel information:
 
         Tunnel Index:           2
