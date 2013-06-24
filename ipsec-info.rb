@@ -83,12 +83,8 @@ begin
             count = 0
             tunnel_list.each do |tunnel|
                 count += 1 if tunnel == ip
-            end
-            if (count / 2) == 1
-                tcount = "tunnel"
-            else
-                tcount = "tunnels"
-            end
+            end 
+            tcount = (count / 2) == 1 ? "tunnel" : "tunnels"
             
             puts "#{ip} => IKE Phase 1 Status: #{status.colorize(:green)}" if status == "UP"
             puts "#{ip} => IKE Phase 1 Status: #{status.colorize(:red)}" if status == "DOWN"
