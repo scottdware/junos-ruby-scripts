@@ -36,6 +36,6 @@ This can be done by issuing `gem install <gem>` on the cli.
 
         No active tunnels for this IP. VPN is down!</code></pre>
         
-    - If a connection times out, or you typed in the wrong user/password, you will get an error message:
+    - If a connection times out, or you entered in the wrong credentials, you will get an error message:
     
     `ERROR: Connection timed out!` or `ERROR: Authentication failed!`
