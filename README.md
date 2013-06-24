@@ -7,6 +7,8 @@ gems installed:
 - highline
 - colorized
 
+This can be done by issuing `gem install <gem>` on the cli.
+
 ### Script list & overview
 
 - `ipsec-info.rb <user@host>`
