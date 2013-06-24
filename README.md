@@ -18,11 +18,11 @@ gems installed:
         Tunnel Index:           2
         Identifier:             5b41dc1c
         Encryption:             ESP:3des/sha1
-        Direction:              &lt inbound
+        Direction:              &lt; inbound
         Lifetime/Remaining:     3206/unlim
 
         Tunnel Index:           2
         Identifier:             97974ccd
         Encryption:             ESP:3des/sha1
-        Direction:              &gt outbound
+        Direction:              &gt; outbound
         Lifetime/Remaining:     3206/unlim</code></pre>
