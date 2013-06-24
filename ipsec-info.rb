@@ -16,6 +16,7 @@ if host.nil? || user.nil?
 	usage()
 end
 
+# Hide the password from being viewed on the cli.
 pass = ask("Password: ") { |a| a.echo = false }
 
 login = {
