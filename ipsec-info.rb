@@ -4,7 +4,7 @@ require 'colorize'
 
 # Print out the usage if there is no argument given.
 def usage()
-	puts "Usage: ipsec-info.rb <user@host>\n"
+    puts "Usage: ipsec-info.rb <user@host>\n"
 	exit 0
 end
 

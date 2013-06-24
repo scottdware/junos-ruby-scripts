@@ -5,7 +5,7 @@ gems installed:
 
 - netconf
 - highline
-- colorized
+- colorize
 
 This can be done by issuing `gem install <gem>` on the cli.
 
