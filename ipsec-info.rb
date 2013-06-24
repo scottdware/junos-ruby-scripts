@@ -94,8 +94,8 @@ begin
                 puts "\tNo active tunnels for this IP. VPN is down!".colorize(:yellow)
             end
 
-            ipsec_data.each_pair do |key, value|
-                data = value.split(",")
+            ipsec_data.each_pair do |key, info|
+                data = info.split(",")
                 encr = data[1]
                 traffic = data[2]
                 life = data[3]
