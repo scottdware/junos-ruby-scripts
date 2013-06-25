@@ -14,7 +14,8 @@ This can be done by issuing `gem install <gem>` on the cli.
 #### ipsec-info.rb
 
 Usage: `ipsec-info.rb <user@host>`
-    - This script will query an SRX and get all of the IPsec VPN tunnel information. Example output:
+
+This script will query an SRX and get all of the IPsec VPN tunnel information. Example output:
 
 	<pre><code>Total Active Tunnels: 1
     
