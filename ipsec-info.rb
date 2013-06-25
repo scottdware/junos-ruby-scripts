@@ -85,9 +85,9 @@ begin
                 count += 1 if tunnel == ip
             end 
             tcount = (count / 2) == 1 ? "tunnel" : "tunnels"
+            scolor = status == "UP" ? :green : :red
             
-            puts "#{ip} => IKE Phase 1 Status: #{status.colorize(:green)}" if status == "UP"
-            puts "#{ip} => IKE Phase 1 Status: #{status.colorize(:red)}" if status == "DOWN"
+            puts "#{ip} => IKE Phase 1 Status: #{status.colorize(scolor)}"
             puts "\tPer-flow tunnel information (#{count / 2} #{tcount}):\n\n"
             
             if status == "DOWN"
@@ -101,13 +101,13 @@ begin
                 life = data[3]
                 spi = data[4]
                 tindex = data[5]
+                tcolor = traffic == "< inbound" ? :green : :cyan
 
                 if data[0] == ip
                     puts "\tTunnel Index:\t\t#{tindex}"
                     puts "\tIdentifier:\t\t#{spi}"
                     puts "\tEncryption:\t\t#{encr.colorize(:yellow)}"
-                    puts "\tDirection:\t\t#{traffic.colorize(:green)}" if traffic == "< inbound"
-                    puts "\tDirection:\t\t#{traffic.colorize(:cyan)}" if traffic == "> outbound"
+                    puts "\tDirection:\t\t#{traffic.colorize(tcolor)}"
                     puts "\tLifetime/Remaining:\t#{life.colorize(:gray)}\n\n"
                 end
             end
