@@ -39,6 +39,6 @@ This script will query an SRX and get all of the IPsec VPN tunnel information. E
 
         No active tunnels for this IP. VPN is down!</code></pre>
         
-    - If a connection times out, or you entered in the wrong credentials, you will get an error message:
+If a connection times out, or you entered in the wrong credentials, you will get an error message:
     
-    `ERROR: Connection timed out!` or `ERROR: Authentication failed!`
+`ERROR: Connection timed out!` or `ERROR: Authentication failed!`
