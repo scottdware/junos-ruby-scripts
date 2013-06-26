@@ -5,7 +5,7 @@ require 'colorize'
 # Print out the usage if there is no argument given.
 def usage()
   puts "Usage: ipsec-info.rb <user@host>\n"
-	exit 0
+  exit 0
 end
 
 # Get the username and host.
@@ -13,16 +13,16 @@ host = ARGV[0].split('@')[1]
 user = ARGV[0].split('@')[0]
 
 if host.nil? || user.nil?
-	usage()
+  usage()
 end
 
 # Hide the password from being viewed on the cli.
 pass = ask("Password: ") { |a| a.echo = false }
 
 login = {
-	:target	=> host,
-	:username => user,
-	:password => pass
+  :target => host,
+  :username => user,
+  :password => pass
 }
 
 begin
