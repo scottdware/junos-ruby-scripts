@@ -8,11 +8,15 @@ def usage()
   exit 0
 end
 
+if ARGV.size == 0
+  usage()
+end
+
 # Get the username and host.
 host = ARGV[0].split('@')[1]
 user = ARGV[0].split('@')[0]
 
-if host.nil? || user.nil?
+if host.nil? || user.nil? || ARGV[0] == "help"
   usage()
 end
 
