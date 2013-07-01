@@ -2,14 +2,20 @@ require 'net/netconf/jnpr'
 require 'highline/import'
 require 'colorize'
 
-if RUBY_PLATFORM =~ /(i386-mingw32|win32)/
-  require 'win32console'
+begin
+  if RUBY_PLATFORM =~ /(i386-mingw32|win32)/
+    require 'win32console'
+  end
+rescue LoadError => e
+  puts "ERROR: #{e}:"
+  puts "Please make sure that you install win32console via 'gem install win32console'"
+  exit
 end
 
 # Print out the usage if there is no argument given.
 def usage()
   puts "Usage: ipsec-info.rb <user@host>\n"
-  exit 0
+  exit
 end
 
 if ARGV.size == 0
