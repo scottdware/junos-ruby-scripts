@@ -7,6 +7,10 @@ gems installed:
 - highline
 - colorize
 
+If you are running this script on Windows, then you will need to install the following gem:
+
+- win32console
+
 This can be done by issuing `gem install <gem>` on the cli.
 
 ### Script list & overview
