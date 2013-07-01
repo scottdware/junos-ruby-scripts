@@ -2,6 +2,10 @@ require 'net/netconf/jnpr'
 require 'highline/import'
 require 'colorize'
 
+if RUBY_PLATFORM =~ /(i386-mingw32|win32)/
+  require 'win32console'
+end
+
 # Print out the usage if there is no argument given.
 def usage()
   puts "Usage: ipsec-info.rb <user@host>\n"
