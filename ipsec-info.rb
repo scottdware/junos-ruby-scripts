@@ -1,6 +1,7 @@
 require 'net/netconf/jnpr'
 require 'highline/import'
 require 'colorize'
+require 'optparse'
 
 begin
   if RUBY_PLATFORM =~ /(i386-mingw32|win32)/
@@ -14,29 +15,35 @@ end
 
 # Print out the usage if there is no argument given.
 def usage()
-  puts "Usage: ipsec-info.rb <user@host>\n"
+  puts "Usage: ipsec-info.rb -u <username> -h <host> -p\n"
   exit
 end
 
-if ARGV.size == 0
+options = {}
+
+OptionParser.new do |opts|
+  opts.on("-u", "--username [username]", "Username") do |u|
+    options[:username] = u
+  end
+  
+  opts.on("-h", "--hostname [hostname]", "Host") do |h|
+    options[:hostname] = h
+  end
+  
+  opts.on("-p", "--password [password]", "Password") do |p|
+    password = ask("Password: ") { |e| e.echo = false }
+    options[:password] = password
+  end
+end.parse!
+
+if !options[:username] || !options[:hostname] || !options[:password] || options.size < 3
   usage()
 end
-
-# Get the username and host.
-host = ARGV[0].split('@')[1]
-user = ARGV[0].split('@')[0]
-
-if host.nil? || user.nil? || ARGV[0] == "help"
-  usage()
-end
-
-# Hide the password from being viewed on the cli.
-pass = ask("Password: ") { |a| a.echo = false }
 
 login = {
-  :target => host,
-  :username => user,
-  :password => pass
+  :target => options[:hostname],
+  :username => options[:username],
+  :password => options[:password]
 }
 
 begin
