@@ -29,13 +29,13 @@ This script will query an SRX and get all of the IPsec VPN tunnel information. E
         Tunnel Index:           2
         Identifier:             5b41dc1c
         Encryption:             ESP:3des/sha1
-        Direction:              &lt; inbound
+        Direction:              < inbound
         Lifetime/Remaining:     3206/unlim
 
         Tunnel Index:           2
         Identifier:             97974ccd
         Encryption:             ESP:3des/sha1
-        Direction:              &gt; outbound
+        Direction:              > outbound
         Lifetime/Remaining:     3206/unlim
 
     2.2.2.2 => IKE Phase 1 Status: DOWN
