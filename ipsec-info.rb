@@ -2,6 +2,7 @@ require 'net/netconf/jnpr'
 require 'highline/import'
 require 'colorize'
 require 'optparse'
+require 'ostruct'
 
 begin
   if RUBY_PLATFORM =~ /(i386-mingw32|win32)/
@@ -15,35 +16,47 @@ end
 
 # Print out the usage if there is no argument given.
 def usage()
-  puts "Usage: ipsec-info.rb -u <username> -h <host> -p\n"
+  puts "\nUsage: #{File.basename($0)}"
+  puts "\t-d --device\t\t\tDevice hostname or IP."  
+  puts "\t-u --username\t\t\tSSH username."
+  puts "\t-p --password\t\t\t(Optional) SSH password."
+  puts "\t-h --help\t\t\tDisplay the usage.\n\n"
   exit
 end
 
-options = {}
+options = OpenStruct.new
 
 OptionParser.new do |opts|
-  opts.on("-u", "--username [username]", "Username") do |u|
-    options[:username] = u
+  opts.on("-u", "--username username", "SSH username.") do |u|
+    options.username = u
   end
   
-  opts.on("-h", "--hostname [hostname]", "Host") do |h|
-    options[:hostname] = h
+  opts.on("-d", "--device device", "Device hostname or IP.") do |d|
+    options.device = d
   end
   
   opts.on("-p", "--password [password]", "Password") do |p|
-    password = ask("Password: ") { |e| e.echo = false }
-    options[:password] = password
+    options.password = p
+  end
+  
+  opts.on("-h", "--help [help]", "Display the usage.") do |h|
+    options.help = h
   end
 end.parse!
 
-if !options[:username] || !options[:hostname] || !options[:password] || options.size < 3
+if !options.username || !options.device || options.help
   usage()
 end
 
+if !options.password
+  password = ask("Password: ") { |e| e.echo = false }
+  options.password = password
+end
+
 login = {
-  :target => options[:hostname],
-  :username => options[:username],
-  :password => options[:password]
+  :target => options.device,
+  :username => options.username,
+  :password => options.password
 }
 
 begin
@@ -137,9 +150,15 @@ begin
       end
   end
 rescue Net::SSH::AuthenticationFailed
-  puts "\nERROR".colorize(:magenta) + ": Authentication failed!\n\n"
+  puts "\n#{options.device}"
+  puts "|-- ERROR"
+  puts "\t|-- Authentication failed!\n\n"
 rescue Net::SSH::ConnectionTimeout
-  puts "\nERROR".colorize(:magenta) + ": Connection timed out!\n\n"
+  puts "#{options.device}"
+  puts "|-- ERROR"
+  puts "\t|-- Connection timed out!\n\n"
 rescue Errno::ETIMEDOUT
-  puts "\nERROR".colorize(:magenta) + ": Connection timed out!\n\n"
+  puts "#{options.device}"
+  puts "|-- ERROR"
+  puts "\t|-- Connection timed out!\n\n"
 end
