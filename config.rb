@@ -9,6 +9,7 @@ def usage()
   puts "\t-d --device\t\t\tList of devices to configure (file)."
   puts "\t-c --config\t\t\tConfiguration file to commit."
   puts "\t-u --username\t\t\tSSH username."
+  puts "\t-p --password\t\t\t(Optional) SSH password."
   puts "\t-h --help\t\t\tDisplay the usage.\n\n"
   puts "* If you have spaces in the path to your file(s), please enclose them in quotes \"\".\n\n"
   exit
