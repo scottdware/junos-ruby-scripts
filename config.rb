@@ -79,45 +79,45 @@ hosts.each do |host|
         rpc = dev.rpc.commit_configuration
         rpc = dev.rpc.unlock_configuration
       rescue Netconf::LockError => e
-        puts "#{host} (#{current} of #{hosts.count}"
+        puts "#{host} (#{current} of #{hosts.count})"
         puts "|-- ERROR (Lock)"
         puts "\t|-- #{e.message}.\n\n"
       rescue Netconf::EditError => e
-        puts "#{host} (#{current} of #{hosts.count}"
+        puts "#{host} (#{current} of #{hosts.count})"
         puts "|-- ERROR (Edit)"
         puts "\t|-- #{e.message}.\n\n"
       rescue Netconf::ValidateError => e
-        puts "#{host} (#{current} of #{hosts.count}"
+        puts "#{host} (#{current} of #{hosts.count})"
         puts "|-- ERROR (Validate)"
         puts "\t|-- #{e.message}.\n\n"
       rescue Netconf::CommitError => e
-        puts "#{host} (#{current} of #{hosts.count}"
+        puts "#{host} (#{current} of #{hosts.count})"
         puts "|-- ERROR (Commit)"
         puts "\t|-- #{e.message}.\n\n"
       rescue Netconf::RpcError => e
-        puts "#{host} (#{current} of #{hosts.count}"
+        puts "#{host} (#{current} of #{hosts.count})"
         puts "|-- ERROR (General RPC)"
         puts "\t|-- #{e.message}.\n\n"
       else
-        puts "#{host} (#{current} of #{hosts.count}"
+        puts "#{host} (#{current} of #{hosts.count})"
         puts "|-- SUCCESS"
         puts "\t|-- Configuration successfully updated.\n\n"
       end
     end
   rescue SocketError
-    puts "#{host} (#{current} of #{hosts.count}"
+    puts "#{host} (#{current} of #{hosts.count})"
     puts "|-- ERROR"
     puts "\t|-- Check to see if the hostname is incorrect, or if the host exists!\n\n"
   rescue Net::SSH::AuthenticationFailed
-    puts "#{host} (#{current} of #{hosts.count}"
+    puts "#{host} (#{current} of #{hosts.count})"
     puts "|-- ERROR"
     puts "\t|-- Authentication failure!\n\n"
   rescue Net::SSH::ConnectionTimeout
-    puts "#{host} (#{current} of #{hosts.count}"
+    puts "#{host} (#{current} of #{hosts.count})"
     puts "|-- ERROR"
     puts "\t|-- Connection timed out!\n\n"
   rescue Errno::ETIMEDOUT
-    puts "#{host} (#{current} of #{hosts.count}"
+    puts "#{host} (#{current} of #{hosts.count})"
     puts "|-- ERROR"
     puts "\t|-- Connection timed out!\n\n"
   end
