@@ -52,7 +52,7 @@ If a connection times out, or you entered in the wrong credentials, you will get
 Usage: `config.rb -u <username> -d <device file> -c <config file> [-p <password>]`
 
 This script is used to configure a given list of devices with the configuration file that was
-specified. The `-p <password>` option on the command line is optional, but insecure. If you
+specified. The `-p <password>` flag on the command line is optional, but insecure. If you
 omit the `-p` flag, then you will be prompted for your password and it will not be displayed.
 
 * For the list of devices, just place them in a text file, one on each line.
