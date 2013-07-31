@@ -46,3 +46,14 @@ This script will query an SRX and get all of the IPsec VPN tunnel information. E
 If a connection times out, or you entered in the wrong credentials, you will get an error message:
     
 `ERROR: Connection timed out!` or `ERROR: Authentication failed!`
+
+#### config.rb
+
+Usage: `config.rb -u <username> -d <device file> -c <config file> [-p <password>]`
+
+This script is used to configure a given list of devices with the configuration file that was
+specified. The `-p <password>` option on the command line is optional, but insecure. If you
+omit the `-p` flag, then you will be prompted for your password and it will not be displayed.
+
+* For the list of devices, just place them in a text file, one on each line.
+* For the configuration, use `set` commands and place them on each line in your file.
